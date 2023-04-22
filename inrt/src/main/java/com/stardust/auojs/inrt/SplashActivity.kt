@@ -19,7 +19,7 @@ import com.stardust.auojs.inrt.launch.GlobalProjectLauncher
 import java.util.ArrayList
 
 import android.content.pm.PackageManager.PERMISSION_DENIED
-import com.stardust.auojs.inrt.server.ServerManager
+import com.stardust.auojs.inrt.server.AssetsVueServer
 
 /**
  * Created by Stardust on 2018/2/2.
@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun main() {
-        ServerManager(this).startServer()
+
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_PHONE_STATE)
     }
@@ -49,6 +49,7 @@ class SplashActivity : AppCompatActivity() {
     private fun runScript() {
         Thread {
             try {
+                AssetsVueServer().start()
                 GlobalProjectLauncher.launch(this)
             } catch (e: Exception) {
                 e.printStackTrace()
