@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -160,6 +161,10 @@ public class ConsoleView extends FrameLayout implements ConsoleImpl.LogListener 
         mShouldStopRefresh = true;
     }
 
+    public RecyclerView getLogListRecyclerView(){
+        return  mLogListRecyclerView;
+    }
+
 
     @Override
     public void onLogClear() {
@@ -204,6 +209,10 @@ public class ConsoleView extends FrameLayout implements ConsoleImpl.LogListener 
             //mInputContainer.setVisibility(VISIBLE);
             mEditText.requestFocus();
         });
+    }
+
+    public void hideInput(){
+        findViewById(R.id.input_container).setVisibility(GONE);
     }
 
     private class ViewHolder extends RecyclerView.ViewHolder {

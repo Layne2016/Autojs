@@ -47,4 +47,8 @@ object Pref {
     fun shouldStopAllScriptsWhenVolumeUp(): Boolean {
         return preferences.getBoolean(getString(R.string.key_use_volume_control_running), true)
     }
+
+    fun getProjectPath():String {
+      return  GlobalAppContext.get().getExternalFilesDir(null).absolutePath+"/Projects"
+    }
 }

@@ -42,6 +42,11 @@ class LogActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onStart() {
+        super.onStart()
+        Floaty.showAppFloat(this,"cola")
+    }
+
     companion object {
 
 

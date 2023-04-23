@@ -78,7 +78,6 @@ open class AssetsProjectLauncher(private val mAssetsProjectDir: String, private 
         } catch (e: Exception) {
             AutoJs.instance.globalConsole.error(e)
         }
-
     }
 
     private fun prepare() {

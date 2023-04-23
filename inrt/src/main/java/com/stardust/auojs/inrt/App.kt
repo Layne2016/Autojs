@@ -15,6 +15,7 @@ import com.stardust.auojs.inrt.autojs.AutoJs
 import com.stardust.auojs.inrt.autojs.GlobalKeyObserver
 import com.stardust.autojs.core.ui.inflater.ImageLoader
 import com.stardust.autojs.core.ui.inflater.util.Drawables
+import java.io.File
 
 /**
  * Created by Stardust on 2017/7/1.
@@ -69,6 +70,14 @@ class App : Application() {
                         })
             }
         })
+        initDir()
+    }
+
+    private fun initDir() {
+        val projectDir= File(Pref.getProjectPath())
+        if (!projectDir.exists()){
+            projectDir.mkdirs()
+        }
     }
 
 }

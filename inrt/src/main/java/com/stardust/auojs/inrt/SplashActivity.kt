@@ -47,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
 
 
     private fun runScript() {
-        Thread {
+        /*Thread {
             try {
                 GlobalProjectLauncher.launch(this)
             } catch (e: Exception) {
@@ -58,7 +58,8 @@ class SplashActivity : AppCompatActivity() {
                     AutoJs.instance!!.globalConsole.printAllStackTrace(e)
                 }
             }
-        }.start()
+        }.start()*/
+        startActivity(Intent(this@SplashActivity, LogActivity::class.java))
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {
