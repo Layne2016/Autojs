@@ -19,13 +19,20 @@ public class AutoWebBridge {
 
     /**
      * 运行脚本
-     * 示例:bridge.execAJ('toastLog("VUE run script","我是额外参数")')
+     * 示例:bridge.execAjWidthParams('toastLog("VUE run script","我是额外参数")')
      */
     @JavascriptInterface
-    public void execAJ(String script, String params) {
+    public void execAjWidthParams(String script, String params) {
         if (!TextUtils.isEmpty(params)) {
             Pref.INSTANCE.getPreferences().edit().putString(GlobalAppContext.get().getPackageName(), params).apply();
         }
+        StringScriptSource scriptSource = new StringScriptSource(GlobalAppContext.get().getPackageName(), script);
+        scriptEngineService.execute(scriptSource, new ExecutionConfig());
+    }
+
+
+    @JavascriptInterface
+    public void execAj(String script) {
         StringScriptSource scriptSource = new StringScriptSource(GlobalAppContext.get().getPackageName(), script);
         scriptEngineService.execute(scriptSource, new ExecutionConfig());
     }
@@ -63,6 +70,7 @@ public class AutoWebBridge {
         Log.d("bridge", msg);
     }
 
+    @JavascriptInterface
     public String getWebParams() {
         return Pref.INSTANCE.getPreferences().getString(GlobalAppContext.get().getPackageName(), null);
     }

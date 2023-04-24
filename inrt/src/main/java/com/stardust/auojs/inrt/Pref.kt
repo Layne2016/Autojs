@@ -16,11 +16,11 @@ object Pref {
 
     val preferences: SharedPreferences
         get() {
-            return sPreferences ?: {
+            return sPreferences ?: run {
                 val pref = PreferenceManager.getDefaultSharedPreferences(GlobalAppContext.get())
                 sPreferences = pref
                 pref
-            }()
+            }
         }
 
     val isFirstUsing: Boolean
@@ -37,7 +37,10 @@ object Pref {
     }
 
     fun shouldEnableAccessibilityServiceByRoot(): Boolean {
-        return preferences.getBoolean(getString(R.string.key_enable_accessibility_service_by_root), false)
+        return preferences.getBoolean(
+            getString(R.string.key_enable_accessibility_service_by_root),
+            false
+        )
     }
 
     fun shouldHideLogs(): Boolean {
@@ -48,7 +51,7 @@ object Pref {
         return preferences.getBoolean(getString(R.string.key_use_volume_control_running), true)
     }
 
-    fun getProjectPath():String {
-      return  GlobalAppContext.get().getExternalFilesDir(null).absolutePath+"/Projects"
+    fun getProjectPath(): String {
+        return GlobalAppContext.get().getExternalFilesDir(null).absolutePath + "/Projects"
     }
 }

@@ -10,11 +10,13 @@
 <button type="button" id="button2" onclick="callAndroid2()">点击按钮调用aaaaaaaaaaaaaa2</button>
 </body>
 <script>
-  function callAndroid(){
-    bridge.execAJ('toastLog("vue call auto")','我是参数')
-  }
-  function callAndroid2(){
 
+  function callAndroid(){
+    bridge.execAjWidthParams('toastLog("vue call auto")','我是参数')
+  }
+
+  function callAndroid2(){
+    bridge.execAj('importClass(com.stardust.auojs.inrt.auto_web.AutoWebBridge);let paras=com.stardust.auojs.inrt.auto_web.AutoWebBridge.instance().getWebParams();log("接收到:"+paras)')
     bridge.loge("66888");
   }
 
